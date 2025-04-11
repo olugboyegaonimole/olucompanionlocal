@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Word Summaries</title>
+</head>
+<body>
+    <h1>One Word Summaries</h1>
+    <ul>
+        {% for summary in one_word_summaries %}
+            <li>{{ summary.phrase }} ➜ {{ summary.one_word }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

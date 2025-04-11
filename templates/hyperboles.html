@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperboles</title>
+</head>
+<body>
+    <h1>Hyperboles</h1>
+    <ul>
+        {% for hyperbole in hyperboles %}
+            <li><strong>{{ hyperbole.phrase }}</strong> ➜ {{ hyperbole.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

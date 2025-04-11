@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student's Companion</title>
+</head>
+<body>
+    <h1>Welcome to Student's Companion</h1>
+    <h2>Categories</h2>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }}</li>  <!-- Display category name -->
+        {% endfor %}
+    </ul>
+    <a href="/synonyms">View Synonyms</a> | <a href="/concise_expressions">View Concise Expressions</a> | <a href="/word_substitutions">View Word Substitutions</a> | <a href="/simplifications">View Word Simplifications</a> | <a href="/one_word_summaries">View One Word Summaries</a> | <a href="/metaphors">View Metaphors</a> | <a href="/similes">View Similes</a> | <a href="/idioms">View Idioms</a> | <a href="/personifications">View Personifications</a> | <a href="/hyperboles">View Hyperboles</a> | <a href="/wisdom_proverbs">View Wisdom Proverbs</a>
+</body>
+</html>
