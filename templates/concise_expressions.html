@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concise Expressions</title>
+</head>
+<body>
+    <h1>Concise Expressions</h1>
+    <ul>
+        {% for expression in concise_expressions %}
+            <li>{{ expression.phrase }} ➜ {{ expression.concise_version }}</li> <!-- Display the phrase and concise version -->
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idioms</title>
+</head>
+<body>
+    <h1>Idioms</h1>
+    <ul>
+        {% for idiom in idioms %}
+            <li><strong>{{ idiom.idiom }}</strong> ➜ {{ idiom.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>
