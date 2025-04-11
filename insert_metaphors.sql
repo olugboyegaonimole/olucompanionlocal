@@ -1,0 +1,30 @@
+INSERT INTO metaphors (metaphor ,
+    meaning) VALUES
+    ('Time is a thief', 'Time passes quickly and takes away moments of our life.'),
+    ('Life is a rollercoaster', 'Life has ups and downs, just like a rollercoaster ride.'),
+    ('The world is a stage', 'Life is like a play, and we are all actors in it.'),
+    ('She has a heart of stone', 'She is emotionally cold and unfeeling.'),
+    ('The classroom was a zoo', 'The classroom was very noisy and chaotic.'),
+    ('His words were music to my ears', 'What he said made me very happy.'),
+    ('The internet is a goldmine of information', 'The internet is full of valuable knowledge.'),
+    ('He was drowning in work', 'He had too much work to handle.'),
+    ('Hope is the light in the darkness', 'Hope guides us even in difficult times.'),
+    ('She has the heart of a lion', 'She is very brave and courageous.'),
+    ('His voice is velvet', 'He has a very smooth and pleasant voice.'),
+    ('The snow was a white blanket', 'The snow covered everything completely.'),
+    ('Her eyes were diamonds', 'Her eyes were bright and beautiful.'),
+    ('The city is a jungle', 'The city is wild and full of chaos.'),
+    ('His words were daggers', 'His words were very hurtful.'),
+    ('She has a mountain of problems', 'She has many difficult problems to solve.'),
+    ('The wind was a howling wolf', 'The wind was strong and loud.'),
+    ('His mind is a sponge', 'He absorbs knowledge very quickly.'),
+    ('Her smile is sunshine', 'Her smile is warm and bright.'),
+    ('The truth is a double-edged sword', 'The truth can help or hurt at the same time.'),
+    ('The stars are diamonds in the sky', 'The stars shine brightly like diamonds.'),
+    ('His heart was a locked door', 'He was emotionally closed off.'),
+    ('The traffic was a nightmare', 'The traffic was very bad and frustrating.'),
+    ('His brain is a computer', 'He thinks very logically and efficiently.'),
+    ('Love is a battlefield', 'Love can be full of struggles and challenges.');
+
+-- Verify the data
+SELECT * FROM metaphors;

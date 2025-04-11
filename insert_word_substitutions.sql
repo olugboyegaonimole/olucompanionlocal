@@ -1,0 +1,30 @@
+INSERT INTO word_substitutions (original_word,
+    replacement) VALUES
+    ('Utilize', 'Use'),
+    ('Terminate', 'End'),
+    ('Commence', 'Start'),
+    ('Facilitate', 'Help'),
+    ('Obtain', 'Get'),
+    ('Ascertain', 'Find out'),
+    ('Comprehend', 'Understand'),
+    ('Demonstrate', 'Show'),
+    ('Initiate', 'Begin'),
+    ('Endeavor', 'Try'),
+    ('Expedite', 'Speed up'),
+    ('Mandate', 'Order'),
+    ('Notify', 'Tell'),
+    ('Prohibit', 'Ban'),
+    ('Consume', 'Eat'),
+    ('Examine', 'Check'),
+    ('Assist', 'Help'),
+    ('Indicate', 'Point out'),
+    ('Modify', 'Change'),
+    ('Purchase', 'Buy'),
+    ('Request', 'Ask'),
+    ('Conceal', 'Hide'),
+    ('Permit', 'Allow'),
+    ('Investigate', 'Look into'),
+    ('Respond', 'Answer');
+
+-- Verify the data
+SELECT * FROM word_substitutions;
