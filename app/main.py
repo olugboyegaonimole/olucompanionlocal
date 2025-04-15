@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from app.models import Category, Synonym, ConciseExpression, WordSubstitution, Simplification, OneWordSummary, Metaphor, Simile, Idiom, Personification, Hyperbole, WisdomProverb   # Import your models
+from app.models import Category, Synonym, ConciseExpression, WordSubstitution, Simplification, OneWordSummary, Metaphor, Simile, Idiom, Personification, Hyperbole, WisdomProverb, CulturalProverb, MotivationalProverb, HumorousProverb, TimelessSaying, InspirationalQuote, LoveFriendshipQuote, SuccessAmbitionQuote, BirthdayCelebrationQuote   # Import your models
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -87,8 +87,67 @@ async def view_hyperboles(request: Request, db: Session = Depends(get_db)):
 async def view_proverbs(request: Request, db: Session = Depends(get_db)):
     proverbs = db.query(WisdomProverb).all()
     return templates.TemplateResponse("wisdom_proverbs.html", {"request": request, "proverbs": proverbs})
+    
+@app.get("/cultural_proverbs")
+async def view_cultural_proverbs(request: Request, db: Session = Depends(get_db)):
+    cultural_proverbs = db.query(CulturalProverb).all()
+    return templates.TemplateResponse("cultural_proverbs.html", {
+        "request": request,
+        "cultural_proverbs": cultural_proverbs
+    })
 
+@app.get("/motivational_proverbs")
+async def view_motivational_proverbs(request: Request, db: Session = Depends(get_db)):
+    motivational_proverbs = db.query(MotivationalProverb).all()
+    return templates.TemplateResponse("motivational_proverbs.html", {
+        "request": request,
+        "motivational_proverbs": motivational_proverbs
+    })
 
+@app.get("/humorous_proverbs")
+async def view_humorous_proverbs(request: Request, db: Session = Depends(get_db)):
+    humorous_proverbs = db.query(HumorousProverb).all()
+    return templates.TemplateResponse("humorous_proverbs.html", {
+        "request": request,
+        "humorous_proverbs": humorous_proverbs
+    })
 
+@app.get("/timeless_sayings")
+async def view_timeless_sayings(request: Request, db: Session = Depends(get_db)):
+    timeless_sayings = db.query(TimelessSaying).all()
+    return templates.TemplateResponse("timeless_sayings.html", {
+        "request": request,
+        "timeless_sayings": timeless_sayings
+    })
 
+@app.get("/inspirational_quotes")
+async def view_inspirational_quotes(request: Request, db: Session = Depends(get_db)):
+    quotes = db.query(InspirationalQuote).all()
+    return templates.TemplateResponse("inspirational_quotes.html", {
+        "request": request,
+        "inspirational_quotes": quotes
+    })
 
+@app.get("/love_friendship_quotes")
+async def view_love_friendship_quotes(request: Request, db: Session = Depends(get_db)):
+    quotes = db.query(LoveFriendshipQuote).all()
+    return templates.TemplateResponse("love_friendship_quotes.html", {
+        "request": request,
+        "love_friendship_quotes": quotes
+    })
+
+@app.get("/success_ambition_quotes")
+async def view_success_ambition_quotes(request: Request, db: Session = Depends(get_db)):
+    quotes = db.query(SuccessAmbitionQuote).all()
+    return templates.TemplateResponse("success_ambition_quotes.html", {
+        "request": request,
+        "success_ambition_quotes": quotes
+    })
+
+@app.get("/birthday_celebration_quotes")
+async def view_birthday_celebration_quotes(request: Request, db: Session = Depends(get_db)):
+    quotes = db.query(BirthdayCelebrationQuote).all()
+    return templates.TemplateResponse("birthday_celebration_quotes.html", {
+        "request": request,
+        "birthday_celebration_quotes": quotes
+    })

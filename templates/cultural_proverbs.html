@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Proverbs</title>
+</head>
+<body>
+    <h1>Cultural Proverbs</h1>
+    <ul>
+        {% for proverb in cultural_proverbs %}
+            <li>
+                <strong>{{ proverb.proverb }}</strong> (Origin: {{ proverb.origin }})<br>
+                Meaning: {{ proverb.meaning }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>
