@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Landmarks</title>
+</head>
+<body>
+    <h1>World Landmarks</h1>
+    <ul>
+        {% for landmark in world_landmarks %}
+            <li>
+                <strong>{{ landmark.landmark }}</strong> ({{ landmark.location }})<br>
+                ➜ {{ landmark.fact }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

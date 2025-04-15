@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Words</title>
+</head>
+<body>
+    <h1>Power Words</h1>
+    <ul>
+        {% for power_word in power_words %}
+            <li><strong>{{ power_word.word }}</strong> ➜ {{ power_word.usage_example }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

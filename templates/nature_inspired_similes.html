@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature-Inspired Similes</title>
+</head>
+<body>
+    <h1>Nature-Inspired Similes</h1>
+    <ul>
+        {% for nature_simile in nature_inspired_similes %}
+            <li><strong>{{ nature_simile.simile }}</strong> ➜ {{ nature_simile.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

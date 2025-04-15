@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Friendly Words</title>
+</head>
+<body>
+    <h1>Child Friendly Words</h1>
+    <ul>
+        {% for child_friendly_word in child_friendly_words %}
+            <li><strong>{{ child_friendly_word.difficult_word }}</strong> ➜ {{ child_friendly_word.easy_word }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Writing Mistakes</title>
+</head>
+<body>
+    <h1>Common Writing Mistakes</h1>
+    <ul>
+        {% for item in common_writing_mistakes %}
+            <li><strong>{{ item.mistake }}</strong> ➜ {{ item.correction }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>
