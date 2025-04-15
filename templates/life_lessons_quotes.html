@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Lessons Quotes</title>
+</head>
+<body>
+    <h1>Life Lessons Quotes</h1>
+    <ul>
+        {% for quote in life_lessons_quotes %}
+            <li>
+                “{{ quote.quote }}”<br>
+                — <em>{{ quote.author }}</em>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

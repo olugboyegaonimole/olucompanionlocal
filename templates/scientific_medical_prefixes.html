@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific & Medical Prefixes</title>
+</head>
+<body>
+    <h1>Scientific & Medical Prefixes</h1>
+    <ul>
+        {% for prefix in scientific_medical_prefixes %}
+            <li><strong>{{ prefix.prefix }}</strong> ➜ {{ prefix.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

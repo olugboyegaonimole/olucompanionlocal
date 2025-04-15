@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Short Synonyms</title>
+</head>
+<body>
+    <h1>Common Short Synonyms</h1>
+    <ul>
+        {% for synonym in common_short_synonyms %}
+            <li><strong>{{ synonym.complex_word }}</strong> ➜ {{ synonym.simpler_word }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

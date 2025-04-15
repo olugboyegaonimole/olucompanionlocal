@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extreme Weather Facts</title>
+</head>
+<body>
+    <h1>Extreme Weather Facts</h1>
+    <ul>
+        {% for fact in extreme_weather_facts %}
+            <li>
+                <strong>{{ fact.phenomenon }}</strong> ({{ fact.location }})<br>
+                ➜ {{ fact.fact }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

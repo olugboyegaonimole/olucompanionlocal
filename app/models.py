@@ -186,16 +186,16 @@ class CommonShortSynonym(Base):
     __tablename__ = "common_short_synonyms"
     
     id = Column(Integer, primary_key=True, index=True)
-    word = Column(String)
-    synonym = Column(String)
+    complex_word = Column(String)
+    simpler_word = Column(String)
 
 # 23. Small Words for Big Ones - Everyday Alternatives
 class EverydayAlternative(Base):
     __tablename__ = "everyday_alternatives"
     
     id = Column(Integer, primary_key=True, index=True)
-    word = Column(String)
-    alternative = Column(String)
+    formal_word  = Column(String)
+    informal_alternative  = Column(String)
 
 # 24. Small Words for Big Ones - Power Words
 class PowerWord(Base):
@@ -203,15 +203,15 @@ class PowerWord(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     word = Column(String)
-    description = Column(String)
+    usage_example  = Column(String)
 
 # 25. Small Words for Big Ones - Child-Friendly Words
 class ChildFriendlyWord(Base):
     __tablename__ = "child_friendly_words"
     
     id = Column(Integer, primary_key=True, index=True)
-    word = Column(String)
-    simplified_version = Column(String)
+    difficult_word  = Column(String)
+    easy_word  = Column(String)
 
 # 26. Comparisons or Similes - Animal Similes
 class AnimalSimile(Base):
@@ -219,7 +219,7 @@ class AnimalSimile(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     simile = Column(String)
-    explanation = Column(String)
+    meaning = Column(String)
 
 # 27. Comparisons or Similes - Nature-Inspired Similes
 class NatureInspiredSimile(Base):
@@ -227,7 +227,7 @@ class NatureInspiredSimile(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     simile = Column(String)
-    explanation = Column(String)
+    meaning = Column(String)
 
 # 28. Comparisons or Similes - Emotional Similes
 class EmotionalSimile(Base):
@@ -235,7 +235,7 @@ class EmotionalSimile(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     simile = Column(String)
-    explanation = Column(String)
+    meaning  = Column(String)
 
 # 29. Comparisons or Similes - Funny Similes
 class FunnySimile(Base):
@@ -243,7 +243,7 @@ class FunnySimile(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     simile = Column(String)
-    explanation = Column(String)
+    meaning  = Column(String)
 
 # 30. Comparisons or Similes - Poetic Comparisons
 class PoeticComparison(Base):
@@ -251,15 +251,15 @@ class PoeticComparison(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     comparison = Column(String)
-    explanation = Column(String)
+    meaning  = Column(String)
 
 # 31. Abbreviations/Prefixes - Internet & Texting Abbreviations
-class InternetAbbreviation(Base):
-    __tablename__ = "internet_abbreviations"
+class InternetTextingAbbreviation(Base):
+    __tablename__ = "internet_texting_abbreviations"
     
     id = Column(Integer, primary_key=True, index=True)
     abbreviation = Column(String)
-    full_form = Column(String)
+    meaning = Column(String)
 
 # 32. Abbreviations/Prefixes - Scientific & Medical Prefixes
 class ScientificMedicalPrefix(Base):
@@ -270,27 +270,27 @@ class ScientificMedicalPrefix(Base):
     meaning = Column(String)
 
 # 33. Abbreviations/Prefixes - Business & Corporate Acronyms
-class BusinessAcronym(Base):
-    __tablename__ = "business_acronyms"
+class BusinessCorporateAcronym(Base):
+    __tablename__ = "business_corporate_acronyms"
     
     id = Column(Integer, primary_key=True, index=True)
     acronym = Column(String)
     meaning = Column(String)
 
 # 34. Abbreviations/Prefixes - Educational & Academic Shortforms
-class EducationalShortform(Base):
-    __tablename__ = "educational_shortforms"
+class EducationalAcademicShortform(Base):
+    __tablename__ = "educational_academic_shortforms"
     
     id = Column(Integer, primary_key=True, index=True)
-    shortform = Column(String)
-    full_form = Column(String)
+    abbreviation = Column(String)
+    meaning = Column(String)
 
 # 35. Abbreviations/Prefixes - Government & Legal Terms
 class GovernmentLegalTerm(Base):
     __tablename__ = "government_legal_terms"
     
     id = Column(Integer, primary_key=True, index=True)
-    abbreviation = Column(String)
+    term  = Column(String)
     meaning = Column(String)
 
 # 36. Geographical Facts - World Landmarks
@@ -300,69 +300,71 @@ class WorldLandmark(Base):
     id = Column(Integer, primary_key=True, index=True)
     landmark = Column(String)
     location = Column(String)
+    fact = Column(String)
 
 # 37. Geographical Facts - Unique Natural Wonders
-class NaturalWonder(Base):
-    __tablename__ = "natural_wonders"
+class UniqueNaturalWonder(Base):
+    __tablename__ = "unique_natural_wonders"
     
     id = Column(Integer, primary_key=True, index=True)
     wonder = Column(String)
     location = Column(String)
+    fact = Column(String)
 
 # 38. Geographical Facts - Extreme Weather Facts
 class ExtremeWeatherFact(Base):
     __tablename__ = "extreme_weather_facts"
     
     id = Column(Integer, primary_key=True, index=True)
-    weather_event = Column(String)
+    phenomenon  = Column(String)
     location = Column(String)
+    fact = Column(String)
 
 # 39. Geographical Facts - Capital Cities & Countries
-class CapitalCity(Base):
-    __tablename__ = "capital_cities"
+class CapitalCitiesCountries(Base):
+    __tablename__ = "capital_cities_countries"
     
     id = Column(Integer, primary_key=True, index=True)
-    city = Column(String)
+    capital_city  = Column(String)
     country = Column(String)
 
 # 40. Geographical Facts - Fun Geography Trivia
-class GeographyTrivia(Base):
-    __tablename__ = "geography_trivia"
+class FunGeographyTrivia(Base):
+    __tablename__ = "fun_geography_trivia"
     
     id = Column(Integer, primary_key=True, index=True)
-    trivia_fact = Column(String)
+    fact  = Column(String)
 
 # 41. Revision Notes in English - Grammar Essentials
-class GrammarEssential(Base):
+class GrammarEssentials(Base):
     __tablename__ = "grammar_essentials"
     
     id = Column(Integer, primary_key=True, index=True)
-    rule = Column(String)
-    description = Column(String)
+    topic  = Column(String)
+    explanation  = Column(String)
 
 # 42. Revision Notes in English - Literary Devices
-class LiteraryDevice(Base):
+class LiteraryDevices(Base):
     __tablename__ = "literary_devices"
     
     id = Column(Integer, primary_key=True, index=True)
     device = Column(String)
-    explanation = Column(String)
+    definition  = Column(String)
 
 # 43. Revision Notes in English - Common Writing Mistakes
-class WritingMistake(Base):
+class CommonWritingMistakes(Base):
     __tablename__ = "common_writing_mistakes"
     
     id = Column(Integer, primary_key=True, index=True)
     mistake = Column(String)
-    explanation = Column(String)
+    correction  = Column(String)
 
 # 44. Revision Notes in English - Exam Tips & Tricks
-class ExamTipTrick(Base):
+class ExamTipsTricks(Base):
     __tablename__ = "exam_tips_tricks"
     
     id = Column(Integer, primary_key=True, index=True)
-    tip_or_trick = Column(String)
-    description = Column(String)
+    tip = Column(String)
 
 # 45. Revision Notes in English - Reading Comprehension Strategies
 class ReadingComprehensionStrategy(Base):

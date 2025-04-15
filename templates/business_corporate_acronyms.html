@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business & Corporate Acronyms</title>
+</head>
+<body>
+    <h1>Business & Corporate Acronyms</h1>
+    <ul>
+        {% for acronym in business_corporate_acronyms %}
+            <li><strong>{{ acronym.acronym }}</strong> ➜ {{ acronym.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

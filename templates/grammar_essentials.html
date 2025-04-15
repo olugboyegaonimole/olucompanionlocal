@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Essentials</title>
+</head>
+<body>
+    <h1>Grammar Essentials</h1>
+    <ul>
+        {% for item in grammar_essentials %}
+            <li><strong>{{ item.topic }}</strong> ➜ {{ item.explanation }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

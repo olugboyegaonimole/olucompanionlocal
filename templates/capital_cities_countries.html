@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital Cities and Countries</title>
+</head>
+<body>
+    <h1>Capital Cities and Their Countries</h1>
+    <ul>
+        {% for entry in capital_cities_countries %}
+            <li>
+                <strong>{{ entry.capital_city }}</strong> ➜ {{ entry.country }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

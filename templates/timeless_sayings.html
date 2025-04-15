@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Sayings</title>
+</head>
+<body>
+    <h1>Timeless Sayings</h1>
+    <ul>
+        {% for saying in timeless_sayings %}
+            <li>
+                <strong>{{ saying.saying }}</strong><br>
+                Meaning: {{ saying.meaning }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

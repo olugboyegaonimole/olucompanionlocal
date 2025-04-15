@@ -1,0 +1,32 @@
+INSERT INTO world_landmarks (landmark, location, fact) VALUES
+('Eiffel Tower', 'Paris, France', 'The Eiffel Tower was originally intended to be a temporary structure for the 1889 World''s Fair.'),
+('Great Wall of China', 'China', 'The Great Wall of China is the longest wall in the world, stretching over 13,000 miles.'),
+('Pyramids of Giza', 'Giza, Egypt', 'The Pyramids of Giza are the only surviving wonder of the ancient Seven Wonders of the World.'),
+('Statue of Liberty', 'New York City, USA', 'The Statue of Liberty was a gift from France to the United States in 1886.'),
+('Machu Picchu', 'Cusco Region, Peru', 'Machu Picchu was built in the 15th century and abandoned in the 16th century during the Spanish Conquest.'),
+('Taj Mahal', 'Agra, India', 'The Taj Mahal is a white marble mausoleum built by Emperor Shah Jahan in memory of his wife Mumtaz Mahal.'),
+('Colosseum', 'Rome, Italy', 'The Colosseum was used for gladiatorial contests and public spectacles in ancient Rome.'),
+('Christ the Redeemer', 'Rio de Janeiro, Brazil', 'The Christ the Redeemer statue stands 98 feet tall and was completed in 1931.'),
+('Sydney Opera House', 'Sydney, Australia', 'The Sydney Opera House is known for its unique sail-like design and is one of the busiest art centers in the world.'),
+('Stonehenge', 'Wiltshire, England', 'Stonehenge is a prehistoric monument consisting of a ring of standing stones, each around 13 feet high.'),
+('Acropolis of Athens', 'Athens, Greece', 'The Acropolis is home to several ancient buildings, including the Parthenon.'),
+('Mount Fuji', 'Honshu, Japan', 'Mount Fuji is an active stratovolcano and the highest peak in Japan, standing at 12,388 feet.'),
+('Petra', 'Ma''an, Jordan', 'Petra is an archaeological site famous for its rock-cut architecture and water conduit system.'),
+('Mount Rushmore', 'South Dakota, USA', 'Mount Rushmore features the faces of four U.S. presidents carved into the Black Hills of South Dakota.'),
+('Big Ben', 'London, England', 'Big Ben refers to the Great Bell of the clock at the Palace of Westminster, although it''s commonly used to refer to the clock tower.'),
+('The Louvre', 'Paris, France', 'The Louvre is the world''s largest art museum and a historic monument in Paris.'),
+('Chichen Itza', 'Yucatán Peninsula, Mexico', 'Chichen Itza was a large pre-Columbian city built by the Maya civilization.'),
+('Sagrada Familia', 'Barcelona, Spain', 'The Sagrada Familia is an unfinished Roman Catholic basilica designed by architect Antoni Gaudí.'),
+('Angkor Wat', 'Siem Reap, Cambodia', 'Angkor Wat is the largest religious monument in the world, originally built as a Hindu temple.'),
+('Alhambra', 'Granada, Spain', 'The Alhambra is a palace and fortress complex that was originally constructed in the mid-13th century.'),
+('Neuschwanstein Castle', 'Bavaria, Germany', 'The Neuschwanstein Castle inspired Walt Disney''s Sleeping Beauty Castle.'),
+('The Great Barrier Reef', 'Queensland, Australia', 'The Great Barrier Reef is the world''s largest coral reef system, home to a wide variety of marine life.'),
+('Golden Gate Bridge', 'San Francisco, USA', 'The Golden Gate Bridge is known for its iconic Art Deco design and spans 1.7 miles over the Golden Gate Strait.'),
+('Burj Khalifa', 'Dubai, UAE', 'The Burj Khalifa is the tallest building in the world, standing at 2,717 feet.'),
+('Cologne Cathedral', 'Cologne, Germany', 'The Cologne Cathedral is a Gothic masterpiece and the largest cathedral in Germany.'),
+('Mount Kilimanjaro', 'Tanzania', 'Mount Kilimanjaro is the highest mountain in Africa, with an elevation of 19,341 feet.'),
+('The Forbidden City', 'Beijing, China', 'The Forbidden City was the imperial palace for Chinese emperors for almost 500 years.'),
+('The Kremlin', 'Moscow, Russia', 'The Kremlin is a fortified complex that includes palaces, cathedrals, and government buildings in Moscow.');
+
+-- Verify the data
+SELECT * FROM world_landmarks;

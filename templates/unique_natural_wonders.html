@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Natural Wonders</title>
+</head>
+<body>
+    <h1>Unique Natural Wonders</h1>
+    <ul>
+        {% for wonder in unique_natural_wonders %}
+            <li>
+                <strong>{{ wonder.wonder }}</strong> ({{ wonder.location }})<br>
+                ➜ {{ wonder.fact }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

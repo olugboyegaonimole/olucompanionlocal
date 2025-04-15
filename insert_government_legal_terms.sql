@@ -1,0 +1,30 @@
+INSERT INTO government_legal_terms (term, meaning) VALUES
+('Constitution', 'A system of fundamental principles or established precedents according to which a state or other organization is governed'),
+('Bill of Rights', 'A list of fundamental rights and freedoms guaranteed to the citizens of a nation'),
+('Jurisprudence', 'The theory or philosophy of law'),
+('Subpoena', 'A writ ordering a person to attend a court or produce evidence'),
+('Plaintiff', 'A person who brings a case against another in a court of law'),
+('Defendant', 'An individual or group being accused or sued in a court of law'),
+('Affidavit', 'A written statement confirmed by oath or affirmation, for use as evidence in court'),
+('Amicus Curiae', 'A person or group who is not a party to a case and offers information or expertise on a matter'),
+('Voir Dire', 'The jury selection process where potential jurors are questioned by the attorneys to determine any biases'),
+('Tort', 'A wrongful act or an infringement of a right (other than under contract) leading to civil legal liability'),
+('Substantive Law', 'The body of law that creates, defines, and regulates the rights and obligations of individuals'),
+('Procedural Law', 'The body of law that governs the process of enforcing legal rights or obligations'),
+('Civil Rights', 'The rights of citizens to political and social freedom and equality'),
+('Habeas Corpus', 'A legal order requiring a person to be brought before a judge, especially to secure a person''s release from unlawful detention'),
+('Precedent', 'A legal decision or form of proceeding serving as an authoritative rule or pattern in future similar cases'),
+('Statute', 'A written law passed by a legislative body'),
+('Indictment', 'A formal charge or accusation of a serious crime'),
+('Injunction', 'A court order that requires a party to do or refrain from doing specific acts'),
+('Jurisdiction', 'The official power to make legal decisions and judgments, typically within a particular geographic area or over certain types of legal cases'),
+('Litigation', 'The process of taking legal action or pursuing a lawsuit'),
+('Monetary Damages', 'A sum of money awarded to a person in a civil court case as compensation for a loss or injury'),
+('Prosecution', 'The legal proceedings initiated by the state against a defendant in a criminal case'),
+('Defense Attorney', 'A lawyer who represents the defendant in a criminal case or lawsuit'),
+('Legal Precedent', 'An earlier event or action that is regarded as an example or guide to be followed in subsequent similar circumstances'),
+('Bail', 'The temporary release of an accused person awaiting trial, typically subject to a monetary guarantee'),
+('Warrant', 'A legal document issued by a judge or magistrate giving police permission to arrest someone or search their property');
+
+-- Verify the data
+SELECT * FROM government_legal_terms;

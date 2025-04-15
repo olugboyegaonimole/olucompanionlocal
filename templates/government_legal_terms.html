@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government & Legal Terms</title>
+</head>
+<body>
+    <h1>Government & Legal Terms</h1>
+    <ul>
+        {% for item in government_legal_terms %}
+            <li><strong>{{ item.term }}</strong> ➜ {{ item.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

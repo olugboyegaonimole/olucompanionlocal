@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational & Academic Shortforms</title>
+</head>
+<body>
+    <h1>Educational & Academic Shortforms</h1>
+    <ul>
+        {% for shortform in educational_academic_shortforms %}
+            <li><strong>{{ shortform.abbreviation }}</strong> ➜ {{ shortform.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

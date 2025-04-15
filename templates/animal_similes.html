@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Similes</title>
+</head>
+<body>
+    <h1>Animal Similes</h1>
+    <ul>
+        {% for animal_simile in animal_similes %}
+            <li><strong>{{ animal_simile.simile }}</strong> ➜ {{ animal_simile.meaning }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>
