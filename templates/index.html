@@ -8,6 +8,11 @@
 <body>
     <h1>Welcome to Your Learning Resource</h1>
 
+    <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Search..." required>
+        <button type="submit">Search</button>
+    </form>
+
     {% for category, pages in categories.items() %}
         <h2>{{ category }}</h2>
         <ul>
