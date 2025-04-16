@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <div class="max-w-4xl mx-auto py-8 px-4">
+        <h1 class="text-3xl font-bold mb-6">Search Results</h1>
+
+        <!-- Search box again at the top -->
+        <form action="/search" method="get" class="mb-8">
+            <input
+                type="text"
+                name="query"
+                value="{{ query }}"
+                placeholder="Search again..."
+                class="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+        </form>
+
+        {% if results %}
+            {% for section in results %}
+                <div class="mb-6 bg-white shadow rounded-lg p-4">
+                    <h2 class="text-xl font-semibold text-blue-800 mb-1">{{ section.title }}</h2>
+                    <p class="text-sm text-gray-500 italic mb-3">{{ section.category }}</p>
+                    <ul class="space-y-1">
+                        {% for item in section["items"] %}
+                            <li>
+                                <a href="{{ item.url }}" class="text-blue-600 hover:text-blue-800 hover:underline text-base">
+                                    {{ item.label }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-gray-700">No results found for <strong>"{{ query }}"</strong>. Try another search term!</p>
+        {% endif %}
+        
+        <!-- Link to go back home -->
+        <div class="mt-10">
+            <a href="/" class="text-blue-500 hover:underline">← Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>
