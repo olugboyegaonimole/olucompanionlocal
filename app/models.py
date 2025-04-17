@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Text
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -373,5 +373,15 @@ class ReadingComprehensionStrategy(Base):
     id = Column(Integer, primary_key=True, index=True)
     strategy = Column(String)
     explanation = Column(String)
+
+
+class WorldHistoryEvent(Base):
+    __tablename__ = "world_history_events"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, unique=True, nullable=False)
+    description = Column(Text, nullable=True)
+    source_url = Column(String, nullable=True)
+
 
 

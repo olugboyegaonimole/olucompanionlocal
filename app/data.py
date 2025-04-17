@@ -60,5 +60,8 @@ categories = {
             {"name": "Common Writing Mistakes", "url": "/common_writing_mistakes"},
             {"name": "Exam Tips & Tricks", "url": "/exam_tips_tricks"},
             {"name": "Reading Comprehension Strategies", "url": "/reading_comprehension_strategies"}
-        ]
+        ],
+        "World history: Covering major historical events and periods": [
+        {"name": "Major Historical Events", "url": "/world_history_events"}
+    ]
     }
