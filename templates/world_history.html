@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World History Events</title>
+</head>
+<body>
+    <h1>World History Events</h1>
+    <ul>
+        {% for event in events %}
+            <li>
+                <strong>{{ event.title }}</strong> ➜ {{ event.description }}
+                {% if event.source_url %}
+                    <div><a href="{{ event.source_url }}" target="_blank" rel="noopener">Read more</a></div>
+                {% endif %}
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

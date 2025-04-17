@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from app.models import Category, Synonym, ConciseExpression, WordSubstitution, Simplification, OneWordSummary, Metaphor, Simile, Idiom, Personification, Hyperbole, WisdomProverb, CulturalProverb, MotivationalProverb, HumorousProverb, TimelessSaying, InspirationalQuote, LoveFriendshipQuote, SuccessAmbitionQuote, BirthdayCelebrationQuote, LifeLessonsQuote, CommonShortSynonym, EverydayAlternative, PowerWord, ChildFriendlyWord, AnimalSimile, NatureInspiredSimile, EmotionalSimile, FunnySimile, PoeticComparison, InternetTextingAbbreviation, ScientificMedicalPrefix, BusinessCorporateAcronym, EducationalAcademicShortform, GovernmentLegalTerm, WorldLandmark, UniqueNaturalWonder, ExtremeWeatherFact, CapitalCitiesCountries, FunGeographyTrivia, GrammarEssentials, LiteraryDevices, CommonWritingMistakes, ExamTipsTricks, ReadingComprehensionStrategy   # Import your models
+from app.models import Category, Synonym, ConciseExpression, WordSubstitution, Simplification, OneWordSummary, Metaphor, Simile, Idiom, Personification, Hyperbole, WisdomProverb, CulturalProverb, MotivationalProverb, HumorousProverb, TimelessSaying, InspirationalQuote, LoveFriendshipQuote, SuccessAmbitionQuote, BirthdayCelebrationQuote, LifeLessonsQuote, CommonShortSynonym, EverydayAlternative, PowerWord, ChildFriendlyWord, AnimalSimile, NatureInspiredSimile, EmotionalSimile, FunnySimile, PoeticComparison, InternetTextingAbbreviation, ScientificMedicalPrefix, BusinessCorporateAcronym, EducationalAcademicShortform, GovernmentLegalTerm, WorldLandmark, UniqueNaturalWonder, ExtremeWeatherFact, CapitalCitiesCountries, FunGeographyTrivia, GrammarEssentials, LiteraryDevices, CommonWritingMistakes, ExamTipsTricks, ReadingComprehensionStrategy, WorldHistoryEvent   # Import your models
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -382,4 +382,12 @@ async def view_reading_comprehension_strategies(request: Request, db: Session = 
     return templates.TemplateResponse("reading_comprehension_strategies.html", {
         "request": request,
         "reading_comprehension_strategies": strategies
+    })
+
+@app.get("/world_history_events", response_class=HTMLResponse)
+async def view_world_history(request: Request, db: Session = Depends(get_db)):
+    events = db.query(WorldHistoryEvent).all()
+    return templates.TemplateResponse("world_history.html", {
+        "request": request,
+        "events": events
     })
