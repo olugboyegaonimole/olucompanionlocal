@@ -1,13 +1,16 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from app.models import Category, Synonym, ConciseExpression, WordSubstitution, Simplification, OneWordSummary, Metaphor, Simile, Idiom, Personification, Hyperbole, WisdomProverb, CulturalProverb, MotivationalProverb, HumorousProverb, TimelessSaying, InspirationalQuote, LoveFriendshipQuote, SuccessAmbitionQuote, BirthdayCelebrationQuote, LifeLessonsQuote, CommonShortSynonym, EverydayAlternative, PowerWord, ChildFriendlyWord, AnimalSimile, NatureInspiredSimile, EmotionalSimile, FunnySimile, PoeticComparison, InternetTextingAbbreviation, ScientificMedicalPrefix, BusinessCorporateAcronym, EducationalAcademicShortform, GovernmentLegalTerm, WorldLandmark, UniqueNaturalWonder, ExtremeWeatherFact, CapitalCitiesCountries, FunGeographyTrivia, GrammarEssentials, LiteraryDevices, CommonWritingMistakes, ExamTipsTricks, ReadingComprehensionStrategy, WorldHistoryEvent   # Import your models
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from fastapi import Depends
 from app.data import categories
 from fastapi.responses import HTMLResponse
+
+from fuzzywuzzy import fuzz
+from app.page_index import page_index  # our full-text data with names, content, and urls
+
 
 
 
@@ -34,29 +37,30 @@ async def search(request: Request, query: str = "", db: Session = Depends(get_db
     query = query.lower()
     results = []
 
-    for section_title, entries in categories.items():
-        matched_items = []
+    matched_items = []
 
-        for item in entries:
-            if query in item["name"].lower():
-                matched_items.append({
-                    "label": item["name"],
-                    "url": item["url"]  # Use directly from the categories data
-                })
+    for item in page_index:
+        name_match = fuzz.partial_ratio(query, item["name"].lower())
+        content_match = fuzz.partial_ratio(query, item["content"].lower())
 
-        if matched_items:
-            results.append({
-                "title": section_title,
-                "category": "Search Match",
-                "items": matched_items
+        if name_match > 80 or content_match > 70:
+            matched_items.append({
+                "label": item["name"],
+                "url": item["url"]
             })
+
+    if matched_items:
+        results.append({
+            "title": "Matching Results",
+            "category": "Search Match",
+            "items": matched_items
+        })
 
     return templates.TemplateResponse("search.html", {
         "request": request,
         "results": results,
         "query": query
     })
-
 
 @app.get("/")
 async def home(request: Request, db: Session = Depends(get_db)):
