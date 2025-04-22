@@ -11,6 +11,14 @@ from fastapi.responses import HTMLResponse
 from fuzzywuzzy import fuzz
 from app.page_index import page_index  # our full-text data with names, content, and urls
 
+from fastapi.middleware.cors import CORSMiddleware
+from databases import Database
+from typing import Dict, List
+import os
+
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 
 
 
@@ -32,35 +40,161 @@ def get_db():
     finally:
         db.close()
 
+
+
+
+
+
+
+
+
+
+
+
+# CORS setup if needed
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Database connection
+# DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./data.db")
+database = Database(SQLALCHEMY_DATABASE_URL)
+
+# Global search cache
+db_tables = [
+    "synonyms", "concise_expressions", "word_substitutions", "simplifications",
+    "one_word_summaries", "metaphors", "similes", "idioms", "personifications", "hyperboles",
+    "wisdom_proverbs", "cultural_proverbs", "motivational_proverbs", "timeless_sayings",
+    "inspirational_quotes", "love_friendship_quotes", "success_ambition_quotes", "birthday_celebration_quotes",
+    "life_lessons_quotes", "simplified_vocabulary", "common_short_synonyms", "everyday_alternatives",
+    "power_words", "child_friendly_words", "animal_similes", "nature_inspired_similes", "emotional_similes",
+    "funny_similes", "poetic_comparisons", "internet_texting_abbreviations", "scientific_medical_prefixes",
+    "business_corporate_acronyms", "educational_academic_shortforms", "government_legal_terms",
+    "world_landmarks", "unique_natural_wonders", "extreme_weather_facts", "capital_cities_countries",
+    "fun_geography_trivia", "grammar_essentials", "literary_devices", "common_writing_mistakes",
+    "exam_tips_tricks", "reading_comprehension_strategies"
+]
+
+search_cache: Dict[str, List[Dict]] = {}
+
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+    await load_search_cache()
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
+
+# Load all table data into in-memory cache
+async def load_search_cache():
+    for table in db_tables:
+        try:
+            query = f"SELECT * FROM {table}"
+            rows = await database.fetch_all(query)
+            search_cache[table] = [dict(row) for row in rows]
+        except Exception as e:
+            print(f"Failed to load table {table}: {e}")
+
+@app.get("/refresh_cache")
+async def refresh_cache():
+    await load_search_cache()
+    return {"status": "Cache refreshed."}
+
+
+
+
+# Your mapping of table names to their URLs
+table_routes = {
+    "synonyms": "/synonyms",
+    "concise_expressions": "/concise_expressions",
+    "word_substitutions": "/word_substitutions",
+    "simplifications": "/simplifications",
+    "one_word_summaries": "/one_word_summaries",
+    "metaphors": "/metaphors",
+    "similes": "/similes",
+    "idioms": "/idioms",
+    "personifications": "/personifications",
+    "hyperboles": "/hyperboles",
+    "wisdom_proverbs": "/wisdom_proverbs",
+    "cultural_proverbs": "/cultural_proverbs",
+    "motivational_proverbs": "/motivational_proverbs",
+    "timeless_sayings": "/timeless_sayings",
+    "inspirational_quotes": "/inspirational_quotes",
+    "love_friendship_quotes": "/love_friendship_quotes",
+    "success_ambition_quotes": "/success_ambition_quotes",
+    "birthday_celebration_quotes": "/birthday_celebration_quotes",
+    "life_lessons_quotes": "/life_lessons_quotes",
+    "animal_similes": "/animal_similes",
+    "nature_inspired_similes": "/nature_inspired_similes",
+    "emotional_similes": "/emotional_similes",
+    "funny_similes": "/funny_similes",
+    "poetic_comparisons": "/poetic_comparisons",
+    "internet_texting_abbreviations": "/internet_texting_abbreviations",
+    "scientific_medical_prefixes": "/scientific_medical_prefixes",
+    "business_corporate_acronyms": "/business_corporate_acronyms",
+    "educational_academic_shortforms": "/educational_academic_shortforms",
+    "government_legal_terms": "/government_legal_terms",
+    "world_landmarks": "/world_landmarks",
+    "unique_natural_wonders": "/unique_natural_wonders",
+    "extreme_weather_facts": "/extreme_weather_facts",
+    "capital_cities_countries": "/capital_cities_countries",
+    "fun_geography_trivia": "/fun_geography_trivia",
+    "grammar_essentials": "/grammar_essentials",
+    "literary_devices": "/literary_devices",
+    "common_writing_mistakes": "/common_writing_mistakes",
+    "exam_tips_tricks": "/exam_tips_tricks",
+    "reading_comprehension_strategies": "/reading_comprehension_strategies",
+}
+
+
+
+
+
+
+
+
+
 @app.get("/search", response_class=HTMLResponse)
-async def search(request: Request, query: str = "", db: Session = Depends(get_db)):
-    query = query.lower()
+async def search(request: Request, query: str):
     results = []
 
-    matched_items = []
-
-    for item in page_index:
-        name_match = fuzz.partial_ratio(query, item["name"].lower())
-        content_match = fuzz.partial_ratio(query, item["content"].lower())
-
-        if name_match > 80 or content_match > 70:
-            matched_items.append({
-                "label": item["name"],
-                "url": item["url"]
-            })
-
-    if matched_items:
-        results.append({
-            "title": "Matching Results",
-            "category": "Search Match",
-            "items": matched_items
+    if not query:
+        return templates.TemplateResponse("search.html", {
+            "request": request,
+            "results": [],
+            "query": query
         })
+
+    # Search the in-memory cache
+    for table_name, entries in search_cache.items():
+        for entry in entries:
+            term = entry.get("term", "")
+            if query.lower() in term.lower():
+                results.append({
+                    "category": table_name.replace("_", " ").title(),
+                    "term": term,
+                    "url": table_routes.get(table_name, "#")
+                })
 
     return templates.TemplateResponse("search.html", {
         "request": request,
         "results": results,
         "query": query
     })
+
+
+
+
+
+
+
+
+
 
 @app.get("/")
 async def home(request: Request, db: Session = Depends(get_db)):

@@ -9,6 +9,11 @@ from urllib.parse import quote
 from dotenv import load_dotenv
 from sqlalchemy.orm import declarative_base
 
+import json
+
+with open("manual_links.json", "r") as f:
+    manual_links = json.load(f)
+
 
 # --- Load environment variables
 load_dotenv()
@@ -121,16 +126,20 @@ def fetch_world_history_events():
             continue
 
         candidate_url = generate_wikipedia_url(cleaned_title)
-        if verify_url_exists(candidate_url):
-            final_url = candidate_url
-            events.append({
-                "title": cleaned_title,
-                "description": description,
-                "source_url": final_url
-            })
+
+        if cleaned_title in manual_links:
+            final_url = manual_links[cleaned_title]
         else:
+            final_url = candidate_url if verify_url_exists(candidate_url) else DEFAULT_SOURCE
+
+        if final_url == DEFAULT_SOURCE and cleaned_title not in manual_links:
             print(f"[INVALID] {candidate_url}")
 
+        events.append({
+            "title": cleaned_title,
+            "description": description,
+            "source_url": final_url
+        })
 
     return events
 
