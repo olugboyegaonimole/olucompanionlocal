@@ -26,8 +26,6 @@ from typing import Optional
 from collections import defaultdict
 
 
-
-
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
@@ -158,7 +156,6 @@ async def home(request: Request):
 # Mapping of table names to their URLs (for search page linking)
 table_routes = {table: f"/{table}" for table in db_tables}
 
-
 @app.get("/search", response_class=HTMLResponse)
 async def search(request: Request, query: str = ""):
     results = []
@@ -203,7 +200,6 @@ async def search(request: Request, query: str = ""):
 
 #    if not query:
 #        return templates.TemplateResponse("search.html", {"request": request, "query": query, "results": []})
-
 
 @app.get("/{page_name}")
 async def render_dynamic_page(request: Request, page_name: str, db: Session = Depends(get_db)):
